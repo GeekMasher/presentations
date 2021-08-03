@@ -4,7 +4,8 @@
   "description": "Repository of all my public presentations",
   "main": "src/index.js",
   "scripts": {
-    "create": "node src/index.js"
+    "create": "node src/index.js",
+    "publish": "chmod +x ./scripts/build.sh && ./scripts/build.sh"
   },
   "repository": {
     "type": "git",
