@@ -9,7 +9,7 @@ for f in ./presentations/*/slides.md; do
         echo "[+] Processing: $f"
 
         FOLDER=$( dirname "${f}" )
-        OUTPUT="$PUBLIC/presentations/$(basename $FOLDER)"
+        OUTPUT="$PUBLIC/$(basename $FOLDER)"
 
         echo "[+] Output :: $OUTPUT"
         marp --engine ./src/engine.js --output "$OUTPUT.html" $f
