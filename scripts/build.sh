@@ -12,7 +12,7 @@ for f in ./presentations/*/slides.md; do
 
     if [[ -d $OUTPUT ]]; then
         echo "[!] Directories not supported: $OUTPUT"
-    else;
+    else
         echo "[+] Output :: $OUTPUT"
         marp --engine ./src/engine.js --output "$OUTPUT.html" $f
     fi
