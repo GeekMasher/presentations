@@ -5,6 +5,6 @@
 Security Architect @GitHub
 
 Focus on:
-- Static Code Analysis :computer:
-- Code Review :eyes:
-- DevSecOps :handshake:
+- :computer: Static Code Analysis 
+- :eyes: Code Review 
+- :handshake: DevSecOps 
