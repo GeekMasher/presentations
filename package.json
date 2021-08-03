@@ -1,0 +1,31 @@
+{
+  "name": "presentations",
+  "version": "0.1.0",
+  "description": "Repository of all my public presentations",
+  "main": "src/index.js",
+  "scripts": {
+    "create": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GeekMasher/presentations.git"
+  },
+  "keywords": [
+    "presentations",
+    "secuity",
+    "devsecops"
+  ],
+  "author": "GeekMasher",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GeekMasher/presentations/issues"
+  },
+  "homepage": "https://github.com/GeekMasher/presentations#readme",
+  "dependencies": {
+    "@marp-team/marp-cli": "^1.2.0",
+    "@marp-team/marpit": "^2.1.0",
+    "markdown-it-container": "^3.0.0",
+    "markdown-it-footnote": "^3.0.3",
+    "markdown-it-include": "^2.0.0"
+  }
+}
