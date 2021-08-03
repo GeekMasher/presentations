@@ -12,7 +12,7 @@ for f in ./presentations/*/slides.md; do
         OUTPUT="$PUBLIC/$(basename $FOLDER)"
 
         echo "[+] Output :: $OUTPUT"
-        marp --engine ./src/engine.js --output "$OUTPUT.html" $f
+        node node_modules/@marp-team/marp-cli/marp-cli.js --engine ./src/engine.js --output "$OUTPUT.html" $f
     else
         echo "[!] Unable to process file"
     fi
