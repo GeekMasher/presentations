@@ -16,6 +16,15 @@ color: '#392020'
 !include(./presentations/common/whoami.md)
 
 ---
+# Today's Talk
+
+- What is Static Code Analysis?
+- How does Static Code Analysis work?
+- Examples of how this is done
+- What are the Pros and Cons of static Analysis?
+- 
+
+---
 # What is Static Code Analysis?
 
 *OWASP Definition:*
@@ -27,15 +36,56 @@ color: '#392020'
 ---
 # What is Static Code Analysis?
 
-- Automatic tool to discover security issues 
+- An automated tool to Scans Code for Security Issues
+  - Can be run as part of the SDLC process
+  - Discover repetitive security issues
+- Looks at the code without running the code
 
 
 ---
-# Why would you use SAST?
+# How is Static Code Analysis done?
+
+**All these big words...**
+
+- Parsers and Parse trees
+- Abstract Syntax Tress (AST)
+- Control	Flow Graph (CFG)
+- Dataflow Analysis
+- Taint Analysis
 
 
 ---
-#### Example #1 - Detecting Simple Configuration Problems
+<!-- _class: lead -->
+<!-- footer: '*Overly simplified and different languages might look different' -->
+# Compiler and Interpreter Pipelines
+
+![fix](assets/compiler-interpreter.png)
+
+
+
+---
+# Simple Application and Dataflow
+
+<!-- _class: lead -->
+
+```python
+!include(presentations/2021-09-Defcon44131/samples/python-flow.py)
+```
+
+![bg fit right:33%](assets/dataflow.png)
+
+
+---
+# Core Static Analysis Parts
+
+- Sources (user controlled inputs)
+- Sinks (dangerous method)
+- Sanitizers (secures the user data)
+- Passthroughs (functions that track tainted data)
+
+
+---
+#### Example #X - Detecting Simple Configuration Problems
 
 ```python
 !include(presentations/2021-09-Defcon44131/samples/flask-debugging.py)
@@ -80,6 +130,10 @@ What should be
 -->
 
 ---
+# Conclusion
+
+
+---
 # :thumbsup: The Pros
 
 - Easy to Implement
@@ -91,14 +145,14 @@ What should be
   - False Positives
   - False Negatives (un-discovered true findings)
 - Not aware of context
-
-
----
-# Conclusion
+- Need to know all your sources, sinks, and Sanitizers
+  - Every framework, library, and module :eyes:
 
 
 ---
 # References
 
+- [How does JavaScript and JavaScript engine work in the browser and node?](https://medium.com/jspoint/how-javascript-works-in-browser-and-node-ab7d0d09ac2f)
+- [Firing up the Ignition interpreter](https://v8.dev/blog/ignition-interpreter)
 - [Carnegie Mellon University - Taint Analysis](https://www.cs.cmu.edu/~ckaestne/15313/2018/20181023-taint-analysis.pdf)
 - [Northwestern - Static Analysis](https://users.cs.northwestern.edu/~ychen/classes/cs450-f16/lectures/10.10_Static%20Analysis.pdf)
