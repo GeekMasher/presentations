@@ -4,6 +4,8 @@ PUBLIC="./public"
 
 mkdir -p "$PUBLIC"
 
+echo "[+] Public :: $PUBLIC"
+
 for f in ./presentations/*/slides.md; do
     if [ -f "$f" ]; then
         echo "[+] Processing :: $f"
