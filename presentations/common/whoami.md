@@ -1,10 +1,13 @@
 # # Whoami
 
+![bg fit right:30% drop-shadow:15px,15px,15px,rgba(0,0,0,.4)](../common/profile-mathew.png)
+
 **Mathew Payne - @GeekMasher**
 
-Security Architect @GitHub
+Security Architect - GitHub
 
-Focus on:
+*Focus on:*
+
 - :computer: Static Code Analysis 
 - :eyes: Code Review 
-- :handshake: DevSecOps 
+- :handshake: DevOps / DevSecOps 
