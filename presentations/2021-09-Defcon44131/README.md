@@ -14,9 +14,17 @@
 - What is Static Code Analysis?
 - How is Static Code Analysis done?
 - Compiler and Interpreter Pipelines
+- So how do Static Code Analysis tools do it?
 - Types of Static Analysis Tools
-- Core Static Analysis Parts
+- Parsering and Abstract Syntax Tress
+- Control Flow Graph
+- Core Static Analysis non-compiler Parts
+- Dataflow Analysis
+- Taint Analysis
 - Simple Application and Dataflow
+- Example X - Detecting Simple Configuration Problems
+- Example X - Data Flow
+- Example X -
 - Conclusion
 - :thumbsup: The Pros
 - :thumbsdown: The Cons

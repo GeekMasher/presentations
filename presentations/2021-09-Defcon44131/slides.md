@@ -47,8 +47,7 @@ color: '#392020'
 ---
 # How is Static Code Analysis done?
 
-- Parsers and Parse trees
-- Abstract Syntax Tress (AST)
+- Abstract Syntax Tree (AST)
 - Control	Flow Graph (CFG)
 - Dataflow Analysis
 - Taint Analysis
@@ -78,6 +77,9 @@ color: '#392020'
 
 **Which is the right place?**
 
+<!--
+All of these locations you can build a static code analysis tools
+-->
 
 ---
 # Types of Static Analysis Tools
@@ -85,7 +87,7 @@ color: '#392020'
 - Source Code Analysis
   - Parsers source code directly 
 - Build time Analysis
-  - Parser source code as the compiler would
+  - Uses the compiler and source code
 - Binary / Bytecode Analysis
   - Decompile and Disassemble code
 
@@ -93,9 +95,8 @@ color: '#392020'
 This is not a full list but a generalist list that I have
 -->
 
-
 ---
-# Core Static Analysis Parts
+## Core Static Analysis non-compiler Parts
 
 - Sources (user controlled inputs)
 - Sinks (dangerous method)
@@ -104,6 +105,12 @@ This is not a full list but a generalist list that I have
 
 
 
+---
+# Dataflow and Taint Analysis
+
+
+![bg fit right:33%](assets/dataflow.svg)
+<!-- TODO: Fix image -->
 ---
 # Simple Application and Dataflow
 
