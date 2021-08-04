@@ -4,8 +4,9 @@
   "description": "Repository of all my public presentations",
   "main": "src/index.js",
   "scripts": {
-    "create": "node src/index.js",
-    "publish": "chmod +x ./scripts/build.sh && ./scripts/build.sh"
+    "watch": "marp --watch --engine ./src/engine.js -I ./presentations",
+    "build": "chmod +x ./scripts/build.sh && ./scripts/build.sh",
+    "publish": "vercel --prod ./public/"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
     "@marp-team/marpit": "^2.1.0",
     "markdown-it-container": "^3.0.0",
     "markdown-it-footnote": "^3.0.3",
-    "markdown-it-include": "^2.0.0"
+    "markdown-it-include": "^2.0.0",
+    "vercel": "^23.0.1"
   }
 }
