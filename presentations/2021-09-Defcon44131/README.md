@@ -1,18 +1,23 @@
 
+## Agenda
+
+- What is Static Code Analysis?
+- How does Static Code Analysis work?
+- Examples of how this is done
+- What are the Pros and Cons of static Analysis?
 
 ## Structure
 
-- Introduction
-  - Whoami
+- Introduction to Static Code Analysis
+- Today's Talk
 - What is Static Code Analysis?
-- Why would you use SAST?
+- What is Static Code Analysis?
 - How is Static Code Analysis done?
-  - Parsing Code and AST
-  - Taint Analysis
-  - Dataflow Analysis
-
-- Pros
-
-- Cons
-
-- Frameworks and Secure by Default
+- Compiler and Interpreter Pipelines
+- Types of Static Analysis Tools
+- Core Static Analysis Parts
+- Simple Application and Dataflow
+- Conclusion
+- :thumbsup: The Pros
+- :thumbsdown: The Cons
+- References

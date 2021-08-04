@@ -22,7 +22,7 @@ color: '#392020'
 - How does Static Code Analysis work?
 - Examples of how this is done
 - What are the Pros and Cons of static Analysis?
-- 
+
 
 ---
 # What is Static Code Analysis?
@@ -36,16 +36,16 @@ color: '#392020'
 ---
 # What is Static Code Analysis?
 
-- An automated tool to Scans Code for Security Issues
-  - Can be run as part of the SDLC process
-  - Discover repetitive security issues
+- An automated tool to analyse code and answer questions
+  - Generally in security but also quality and other fields
+  - "Does this parameter get used in a SQL query correctly?"
+- Discover repetitive security issues
 - Looks at the code without running the code
+  - No need to deploy or run an application like it would in production
 
 
 ---
 # How is Static Code Analysis done?
-
-**All these big words...**
 
 - Parsers and Parse trees
 - Abstract Syntax Tress (AST)
@@ -53,13 +53,54 @@ color: '#392020'
 - Dataflow Analysis
 - Taint Analysis
 
+**Well, some of these terms might seem familiar...**
+
+<!--
+- Big words in this slide
+- Break down all these parts
+  - For the first part, lets talk about compilers
+-->
 
 ---
 <!-- _class: lead -->
 <!-- footer: '*Overly simplified and different languages might look different' -->
 # Compiler and Interpreter Pipelines
 
-![fix](assets/compiler-interpreter.png)
+![fix](assets/compiler-interpreter.svg)
+
+
+---
+<!-- _class: lead -->
+<!-- footer: '' -->
+## So how do Static Code Analysis tools do it?
+
+![fix](assets/static-code-analysis.svg)
+
+**Which is the right place?**
+
+
+---
+# Types of Static Analysis Tools
+
+- Source Code Analysis
+  - Parsers source code directly 
+- Build time Analysis
+  - Parser source code as the compiler would
+- Binary / Bytecode Analysis
+  - Decompile and Disassemble code
+
+<!--
+This is not a full list but a generalist list that I have
+-->
+
+
+---
+# Core Static Analysis Parts
+
+- Sources (user controlled inputs)
+- Sinks (dangerous method)
+- Sanitizers (secures the user data)
+- Passthroughs (functions that track tainted data)
 
 
 
@@ -72,16 +113,7 @@ color: '#392020'
 !include(presentations/2021-09-Defcon44131/samples/python-flow.py)
 ```
 
-![bg fit right:33%](assets/dataflow.png)
-
-
----
-# Core Static Analysis Parts
-
-- Sources (user controlled inputs)
-- Sinks (dangerous method)
-- Sanitizers (secures the user data)
-- Passthroughs (functions that track tainted data)
+![bg fit right:33%](assets/dataflow.svg)
 
 
 ---
@@ -137,6 +169,8 @@ What should be
 # :thumbsup: The Pros
 
 - Easy to Implement
+- Can be run as part of the SDLC process
+  - IDE, Pull Request, or CICD 
 
 ---
 # :thumbsdown: The Cons
