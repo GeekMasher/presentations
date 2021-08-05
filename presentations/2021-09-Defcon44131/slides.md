@@ -45,20 +45,39 @@ color: '#392020'
 
 
 ---
+# Types of Static Analysis Tools
+
+- **Source Code Analysis**
+  - Parsers source code directly
+  - Some tools use a compiler and requires build-able code
+
+- **Binary / Bytecode Analysis**
+  - Decompile and Disassemble code
+
+<!--
+This is not a full list but a generalist list that I have
+-->
+
+---
 # How is Static Code Analysis done?
+
+**Three Core Pieces to the analysis**
 
 - Abstract Syntax Tree (AST)
 - Control	Flow Graph (CFG)
-- Dataflow Analysis
-- Taint Analysis
-
-**Well, some of these terms might seem familiar...**
+- Dataflow & Taint Analysis
 
 <!--
-- Big words in this slide
 - Break down all these parts
   - For the first part, lets talk about compilers
 -->
+---
+<!-- _class: lead -->
+# Static Code Analysis Pipelines
+
+![fix](assets/static-code-analysis-pipelines.svg)
+
+**Well, some of these terms might seem familiar...**
 
 ---
 <!-- _class: lead -->
@@ -73,45 +92,48 @@ color: '#392020'
 <!-- footer: '' -->
 ## So how do Static Code Analysis tools do it?
 
-![fix](assets/static-code-analysis.svg)
-
-**Which is the right place?**
+![fix](assets/static-code-analysis-intersection.svg)
 
 <!--
 All of these locations you can build a static code analysis tools
 -->
+---
+# Abstract Syntax Tree (AST)
+
+- Built from source code / compilers using:
+  - Lexical Analyser
+  - Symantic Analyser
+
+- Built from binaries / bytecode using:
+  - Decompilers
+  - Disassemblers
+
+<!-- TODO: Fix image -->
+![bg fit right:33%](assets/ast.svg)
+---
+# Control	Flow Graph (CFG)
+
+- Build into Compilers
+- Custom CFG
+
 
 ---
-# Types of Static Analysis Tools
+# Showcase - Radare2 CFG
 
-- Source Code Analysis
-  - Parsers source code directly 
-- Build time Analysis
-  - Uses the compiler and source code
-- Binary / Bytecode Analysis
-  - Decompile and Disassemble code
-
-<!--
-This is not a full list but a generalist list that I have
--->
+<!-- TODO: Get screenshots of Hopper's CFG -->
 
 ---
-## Core Static Analysis non-compiler Parts
+# Dataflow & Taint Analysis
 
 - Sources (user controlled inputs)
 - Sinks (dangerous method)
 - Sanitizers (secures the user data)
 - Passthroughs (functions that track tainted data)
 
-
-
----
-# Dataflow and Taint Analysis
-
-
 ![bg fit right:33%](assets/dataflow.svg)
 <!-- TODO: Fix image -->
 ---
+
 # Simple Application and Dataflow
 
 <!-- _class: lead -->
@@ -137,7 +159,7 @@ Simple debugging is enabled
 -->
 
 ---
-#### Example #X - Data Flow
+#### Example #X - Simple Taint Flow
 
 ```python
 !include(presentations/2021-09-Defcon44131/samples/flask-sqli.py)
