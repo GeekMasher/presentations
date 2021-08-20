@@ -43,7 +43,9 @@ color: '#392020'
 - Looks at the code without running the code
   - No need to deploy or run an application like it would in production
 
-
+<!-- 
+Source: https://owasp.org/www-community/controls/Static_Code_Analysis
+-->
 ---
 # Types of Static Analysis Tools
 
@@ -61,11 +63,12 @@ This is not a full list but a generalist list that I have
 ---
 # How is Static Code Analysis done?
 
-**Three Core Pieces to the analysis**
+**Four Core Part of an Analysis**
 
 - Abstract Syntax Tree (AST)
 - Control	Flow Graph (CFG)
-- Dataflow & Taint Analysis
+- Data Flow Graph (DFG)
+- Taint Analysis
 
 <!--
 - Break down all these parts
@@ -81,7 +84,7 @@ This is not a full list but a generalist list that I have
 
 ---
 <!-- _class: lead -->
-<!-- footer: '*Overly simplified and different languages might look different' -->
+<!-- _footer: '*Overly simplified and different languages might look different' -->
 # Compiler and Interpreter Pipelines
 
 ![fix](assets/compiler-interpreter.svg)
@@ -89,7 +92,6 @@ This is not a full list but a generalist list that I have
 
 ---
 <!-- _class: lead -->
-<!-- footer: '' -->
 ## So how do Static Code Analysis tools do it?
 
 ![fix](assets/static-code-analysis-intersection.svg)
@@ -98,7 +100,7 @@ This is not a full list but a generalist list that I have
 All of these locations you can build a static code analysis tools
 -->
 ---
-# Abstract Syntax Tree (AST)
+## Abstract Syntax Tree (AST)
 
 - Built from source code / compilers using:
   - Lexical Analyser
@@ -108,35 +110,94 @@ All of these locations you can build a static code analysis tools
   - Decompilers
   - Disassemblers
 
-<!-- TODO: Fix image -->
-![bg fit right:33%](assets/ast.svg)
+<!--
+
+**Resources:**
+- https://www.tutorialspoint.com/compiler_design/compiler_design_syntax_analysis.htm
+
+-->
 ---
-# Control	Flow Graph (CFG)
-
-- Build into Compilers
-- Custom CFG
-
-
----
-# Showcase - Radare2 CFG
-
-<!-- TODO: Get screenshots of Hopper's CFG -->
-
----
-# Dataflow & Taint Analysis
-
-- Sources (user controlled inputs)
-- Sinks (dangerous method)
-- Sanitizers (secures the user data)
-- Passthroughs (functions that track tainted data)
-
-![bg fit right:33%](assets/dataflow.svg)
-<!-- TODO: Fix image -->
----
-
-# Simple Application and Dataflow
-
 <!-- _class: lead -->
+<!-- _footer: Using Lark (with Python3 context-free Grammar) + PyDot -->
+#### Example 1: Abstract Syntax Tree 
+
+```python
+# Test function
+def test(var1: str):
+    print("Var :: " + var1)
+
+test("Hello")
+```
+
+![bg fit right:40%](assets/ast-flow-graph.png)
+
+---
+<!-- _class: lead -->
+#### Example 2: Abstract Syntax Tree 
+
+```python
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+if __name__ == "__main__":
+    app.run('0.0.0.0', 5000)
+
+```
+
+![bg fit right:40%](assets/ast-flow-graph-flask.png)
+
+
+---
+<!-- _footer: Image from Wikipedia -->
+## Control Flow Graph (CFG)
+
+- Modeling control flow in the application
+
+- Directional graphs
+
+- Built into Compilers
+  - Used primarily for optimisin
+
+
+<!-- TODO: Fix image -->
+![bg fit right:33%](https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Some_types_of_control_flow_graphs.svg/800px-Some_types_of_control_flow_graphs.svg.png)
+
+<!--
+Source: https://en.wikipedia.org/wiki/Control-flow_graph
+
+(a) an if-then-else
+(b) a while loop
+(c) a natural loop with two exits, e.g. while with an if...break in the middle; non-structured but reducible
+(d) an irreducible CFG: a loop with two entry points, e.g. goto into a while or for loop
+-->
+---
+<!-- _footer: 'Image(s): Radare2 CFG by @hexploitable' -->
+### Showcase - Radare2 CFG
+
+![bg fit 60%](assets/control-flow-graph-radare2-1.jpeg)
+<!-- ![bg fit](assets/control-flow-graph-radare2-2.jpeg) -->
+
+---
+## Data Flow Graph (DFG)
+
+- Data model of a program / application
+  - Directional graphs
+
+- No conditionals
+  - CFG focuses on the conditions
+
+<!--
+- https://codeql.github.com/docs/writing-codeql-queries/about-data-flow-analysis/
+- https://www.sciencedirect.com/topics/computer-science/data-flow-graph
+-->
+---
+<!-- _class: lead -->
+#### Example - Simple Application + DFG
 
 ```python
 !include(presentations/2021-09-Defcon44131/samples/python-flow.py)
@@ -144,6 +205,16 @@ All of these locations you can build a static code analysis tools
 
 ![bg fit right:33%](assets/dataflow.svg)
 
+
+---
+# Taint Analysis
+
+- Sources (user controlled inputs)
+- Sinks (dangerous methods / assignments)
+- Sanitizers (secures the user data)
+- Passthroughs (functions that track tainted data)
+
+<!-- TODO: Fix image -->
 
 ---
 #### Example #X - Detecting Simple Configuration Problems
@@ -192,24 +263,11 @@ What should be
 
 ---
 # Conclusion
+!include(presentations/2021-09-Defcon44131/slides/conclusion.md)
 
 
 ---
-# :thumbsup: The Pros
-
-- Easy to Implement
-- Can be run as part of the SDLC process
-  - IDE, Pull Request, or CICD 
-
----
-# :thumbsdown: The Cons
-
-- Poorly written tools leading to:
-  - False Positives
-  - False Negatives (un-discovered true findings)
-- Not aware of context
-- Need to know all your sources, sinks, and Sanitizers
-  - Every framework, library, and module :eyes:
+# Thanks to...
 
 
 ---
