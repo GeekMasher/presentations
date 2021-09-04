@@ -8,24 +8,35 @@
 
 ## Structure
 
-- Introduction to Static Code Analysis
+- **Introduction to Static Code Analysis**
 - Today's Talk
 - What is Static Code Analysis?
 - What is Static Code Analysis?
-- How is Static Code Analysis done?
+- Types of Static Analysis Tools
+- **How is Static Code Analysis done?**
+- Static Code Analysis Pipelines
 - Compiler and Interpreter Pipelines
 - So how do Static Code Analysis tools do it?
-- Types of Static Analysis Tools
-- Parsering and Abstract Syntax Tress
-- Control Flow Graph
-- Core Static Analysis non-compiler Parts
-- Dataflow Analysis
+- Abstract Syntax Tree (AST)
+- Example 1: Abstract Syntax Tree
+- Test function
+- Example 2: Abstract Syntax Tree
+- Control Flow Graph (CFG)
+- Showcase - Radare2 CFG
+- Data Flow Graph (DFG)
+- Example - Simple Application + DFG
 - Taint Analysis
-- Simple Application and Dataflow
 - Example X - Detecting Simple Configuration Problems
-- Example X - Data Flow
+- Example X - Simple Taint Flow
 - Example X -
+- **Context is so important!**
+- Example - Hashing
+- using SHA1
+- Answer: It Depends on context
+- Example - Hashing attempt 2
+- Answer: It Depends on context
 - Conclusion
 - :thumbsup: The Pros
 - :thumbsdown: The Cons
+- Thanks to...
 - References
