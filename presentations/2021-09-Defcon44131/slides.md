@@ -11,6 +11,19 @@ color: '#392020'
 
 **By Mathew Payne - @GeekMasher**
 
+![bg opacity:.2](assets/defcon44131-slide-background.jpeg)
+
+<!--
+**Title:**
+> Introduction to Static Code Analysis
+
+**Description:**
+> This talk will give an introduction into what static code analysis is, go into a deeper dive into how it's done today, and finally discuss the impact & complications around using static analysis.
+
+
+**Slides:**
+https://presentations.geekmasher.dev/2021-09-Defcon44131
+-->
 ---
 
 !include(./presentations/common/whoami.md)
@@ -118,7 +131,7 @@ All of these locations you can build a static code analysis tools
 -->
 ---
 <!-- _class: lead -->
-<!-- _footer: Using Lark (with Python3 context-free Grammar) + PyDot -->
+<!-- _footer: Using Lark + PyDot -->
 #### Example 1: Abstract Syntax Tree 
 
 ```python
@@ -133,6 +146,7 @@ test("Hello")
 
 ---
 <!-- _class: lead -->
+<!-- _footer: Using Lark + PyDot -->
 #### Example 2: Abstract Syntax Tree 
 
 ```python
@@ -160,8 +174,7 @@ if __name__ == "__main__":
 
 - Directional graphs
 
-- Built into Compilers
-  - Used primarily for optimisin
+- Compilers use CFG for optimisations
 
 
 <!-- TODO: Fix image -->
@@ -261,9 +274,88 @@ def index():
 What should be 
 -->
 
+
+<!-- _class: lead -->
+# Context is so important!
+
+**But it's so hard to tools to know without us telling them**
+
+
 ---
+# Example - Hashing
+
+```python
+import hashlib
+
+def hashData(data: str) -> str:
+    # using SHA1
+    hashobj = hashlib.sha1(data.encode())
+    digest = hashobj.hexdigest()
+    return digest
+```
+
+**Is this insecure?**
+
+---
+<!-- _class: lead -->
+# Answer: It Depends on context
+
+**Cryptographic functions, Signing, password storage**
+
+*What about Git? Simple file hashing signatures?*
+
+---
+# Example - Hashing attempt 2
+
+```python
+import hashlib
+
+
+def hashData(data: str) -> str:
+    # using SHA256 now...
+    hashobj = hashlib.sha256(data.encode())
+    digest = hashobj.hexdigest()
+    return digest
+```
+
+**Is this insecure?**
+
+---
+<!-- _class: lead -->
+# Answer: It Depends on context
+
+**Password hashing**
+
+---
+
+```python
+password = input()
+digest = hashData(password)
+
+```
+
+
+---
+<!-- _class: lead -->
 # Conclusion
-!include(presentations/2021-09-Defcon44131/slides/conclusion.md)
+
+---
+# :thumbsup: The Pros
+
+- Easy to Implement in SDLC
+- Can be run as part of the SDLC process
+  - IDE, Pull Request, or CICD 
+
+---
+# :thumbsdown: The Cons
+
+- Poorly written tools leading to:
+  - False Positives
+  - False Negatives (un-discovered true findings)
+- Not aware of context
+- Need to know all your sources, sinks, and Sanitizers
+  - Every framework, library, and module :eyes:
+
 
 
 ---
