@@ -1,7 +1,7 @@
 ---
 marp: true
 theme: gaia
-_class: lead
+class: lead
 paginate: true
 backgroundColor: '#eae8db'
 color: '#392020'
@@ -49,17 +49,15 @@ https://presentations.geekmasher.dev/2021-09-Defcon44131
 ---
 # What is Static Code Analysis?
 
-- :mag: An automated tool to analyse source code
-  - Generally in security but also quality and other fields
-- :Run / Validate known patterns
-- Discover repetitive security issues
-- Looks at the code without running the code
+- :memo: An automated tool to analyse source code
+- :mag: Find and verify known security patterns
+- :repeat: Discover repetitive security issues
+- :hash: Looks at the code without running the code
 
 <!-- 
 Source: https://owasp.org/www-community/controls/Static_Code_Analysis
 -->
 ---
-<!-- _class: lead -->
 # Automating Source Code Review
 
 - :memo: Applications come in all shapes and sizes
@@ -74,24 +72,23 @@ Source: https://owasp.org/www-community/controls/Static_Code_Analysis
 *This is where Static Code Analysis comes into play*
 
 ---
-<!-- _class: lead -->
 # Static Analysis Pipeline / Workflow
 
 :memo: Code => :building_construction: Models => :speech_balloon: Patterns => :bookmark_tabs: Results!
 
 
 ---
-<!-- _class: lead -->
 <!-- TODO: Is there a better name for this I can use? -->
 # Models
 
 - :memo: Parse the code
+  - :palm_tree: Syntax trees
 - :building_construction: Create models of that code
+  - :ocean: Flow Graphs
 - :eyes: Use the models to look for things we are interested in
 
 ---
-<!-- _class: lead -->
-## Security Patterns
+# Security Patterns
 
 - Two general types
 - :beach_umbrella: Using something insecure
@@ -107,23 +104,21 @@ Source: https://owasp.org/www-community/controls/Static_Code_Analysis
 
 <!-- TODO: Better word this -->
 ---
-<!-- _class: lead -->
 # Results Produced
 
 - :warning: Security Issues
-  - Debugging Enabled, SQL Injection, ...
+  - SQL Injection, Cross Site Scripting, ...
 - :sparkles: Best Practices
-  - Using Key Vaults verse Environment Variables, ...
+  - Using Key Vaults, ...
 - :mag_right: Code Quality and Code Smells
   - Long Functions, Duplicated code, ...
 - :thumbsup: Positive Results
-  - Using security hashing algorithm, automatic encoding, ...
+  - Using appropriate hashing algorithms, automatic encoding, ...
 
 <!-- 
 Sources: https://github.com/OWASP/ASVS
 -->
 ---
-<!-- _class: lead -->
 # :warning: Warning: Here be Dragons :dragon:
 
 <!-- TODO: Dragon image + source -->
@@ -140,16 +135,9 @@ Sources: https://github.com/OWASP/ASVS
 *Confusing I know :confused:*
 
 ---
-<!-- _class: lead -->
 # Static Analysis Pipeline / Workflow
 
 :memo: Code => :building_construction: Models => :speech_balloon: Patterns => :bookmark_tabs: Results!
-
----
-<!-- _class: lead -->
-# Static Analysis Pipeline / Workflow
-
-:memo: Code (input) :mag:
 
 ---
 # Types of Static Analysis Tools
@@ -182,7 +170,6 @@ This is not a full list but a generalist list that I have
   - For the first part, lets talk about compilers
 -->
 ---
-<!-- _class: lead -->
 # Static Code Analysis Pipelines
 
 :memo: Code => :building_construction: Models
@@ -193,7 +180,6 @@ This is not a full list but a generalist list that I have
 
 <!-- TODO: Models? -->
 ---
-<!-- _class: lead -->
 <!-- _footer: '*Overly simplified and different languages might look different' -->
 # Compiler and Interpreter Pipelines
 
@@ -201,7 +187,6 @@ This is not a full list but a generalist list that I have
 
 
 ---
-<!-- _class: lead -->
 ## So how do Static Code Analysis tools do it?
 
 ![fix](assets/static-code-analysis-intersection.svg)
@@ -227,7 +212,6 @@ All of these locations you can build a static code analysis tools
 
 -->
 ---
-<!-- _class: lead -->
 <!-- _footer: Using Lark + PyDot -->
 #### Example - Abstract Syntax Tree
 
@@ -242,7 +226,6 @@ test("Hello")
 ![bg fit right:40%](assets/ast-flow-graph.png)
 
 ---
-<!-- _class: lead -->
 <!-- _footer: Using Lark + PyDot -->
 #### Example - Abstract Syntax Tree (web app)
 
@@ -286,6 +269,7 @@ Source: https://en.wikipedia.org/wiki/Control-flow_graph
 (d) an irreducible CFG: a loop with two entry points, e.g. goto into a while or for loop
 -->
 ---
+<!-- _class: -->
 <!-- _footer: 'Image(s): Radare2 CFG by @hexploitable' -->
 ### Showcase - Radare2 CFG
 
@@ -306,7 +290,6 @@ Source: https://en.wikipedia.org/wiki/Control-flow_graph
 - https://www.sciencedirect.com/topics/computer-science/data-flow-graph
 -->
 ---
-<!-- _class: lead -->
 #### Example - Simple Application + DFG
 
 ```python
@@ -371,8 +354,7 @@ def index():
 What should be 
 -->
 
-
-<!-- _class: lead -->
+---
 # Context is so important!
 
 **But it's so hard to tools to know without us telling them**
@@ -394,7 +376,6 @@ def hashData(data: str) -> str:
 **Is this insecure?**
 
 ---
-<!-- _class: lead -->
 # Answer: It Depends on context
 
 **Cryptographic functions, Signing, password storage**
@@ -418,7 +399,6 @@ def hashData(data: str) -> str:
 **Is this insecure?**
 
 ---
-<!-- _class: lead -->
 # Answer: It Depends on context
 
 **Password hashing**
@@ -433,7 +413,6 @@ digest = hashData(password)
 
 
 ---
-<!-- _class: lead -->
 # Conclusion
 
 ---
