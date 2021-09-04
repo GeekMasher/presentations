@@ -49,24 +49,118 @@ https://presentations.geekmasher.dev/2021-09-Defcon44131
 ---
 # What is Static Code Analysis?
 
-- An automated tool to analyse code and answer questions
+- :mag: An automated tool to analyse source code
   - Generally in security but also quality and other fields
-  - "Does this parameter get used in a SQL query correctly?"
+- :Run / Validate known patterns
 - Discover repetitive security issues
 - Looks at the code without running the code
-  - No need to deploy or run an application like it would in production
 
 <!-- 
 Source: https://owasp.org/www-community/controls/Static_Code_Analysis
 -->
 ---
+<!-- _class: lead -->
+# Automating Source Code Review
+
+- :memo: Applications come in all shapes and sizes
+  - :grimacing: From 20 lines to over 100 Million lines!!
+- :hourglass: Security Engineers / Researchers only can do some much
+  - Generally sandbox and limited time
+  - How much code can they review in the time they have?
+  - Covering all security patterns? 
+- :mag: Need to automate the discovery of security issues
+
+
+*This is where Static Code Analysis comes into play*
+
+---
+<!-- _class: lead -->
+# Static Analysis Pipeline / Workflow
+
+:memo: Code => :building_construction: Models => :speech_balloon: Patterns => :bookmark_tabs: Results!
+
+
+---
+<!-- _class: lead -->
+<!-- TODO: Is there a better name for this I can use? -->
+# Models
+
+- :memo: Parse the code
+- :building_construction: Create models of that code
+- :eyes: Use the models to look for things we are interested in
+
+---
+<!-- _class: lead -->
+## Security Patterns
+
+- Two general types
+- :beach_umbrella: Using something insecure
+  - Configurations / Setting
+  - "Is debugging set to True?"
+
+- :mountain: Data flows into somewhere insecure
+  - User Input => [some other stuff] => `sql.execute(input)`
+  - "Are request parameters get used to build a SQL query?"
+
+<!-- _class: lead -->
+*In Static Analysis these are called Rules or Queries*
+
+<!-- TODO: Better word this -->
+---
+<!-- _class: lead -->
+# Results Produced
+
+- :warning: Security Issues
+  - Debugging Enabled, SQL Injection, ...
+- :sparkles: Best Practices
+  - Using Key Vaults verse Environment Variables, ...
+- :mag_right: Code Quality and Code Smells
+  - Long Functions, Duplicated code, ...
+- :thumbsup: Positive Results
+  - Using security hashing algorithm, automatic encoding, ...
+
+<!-- 
+Sources: https://github.com/OWASP/ASVS
+-->
+---
+<!-- _class: lead -->
+# :warning: Warning: Here be Dragons :dragon:
+
+<!-- TODO: Dragon image + source -->
+
+---
+# Before we begin: Glossary
+
+- Static Code Analysis == Static Application Security Testing (SAST)
+  - We are not talking about Software Composition Analysis (SCA)
+
+- Abstract Syntax Tree (AST) != Application Security Testing (AST)
+
+<!-- _class: lead -->
+*Confusing I know :confused:*
+
+---
+<!-- _class: lead -->
+# Static Analysis Pipeline / Workflow
+
+:memo: Code => :building_construction: Models => :speech_balloon: Patterns => :bookmark_tabs: Results!
+
+---
+<!-- _class: lead -->
+# Static Analysis Pipeline / Workflow
+
+:memo: Code (input) :mag:
+
+---
 # Types of Static Analysis Tools
 
 - **Source Code Analysis**
+  - Input: Source Code
   - Parsers source code directly
   - Some tools use a compiler and requires build-able code
 
 - **Binary / Bytecode Analysis**
+  - Input: Binaries
   - Decompile and Disassemble code
 
 <!--
@@ -91,10 +185,13 @@ This is not a full list but a generalist list that I have
 <!-- _class: lead -->
 # Static Code Analysis Pipelines
 
+:memo: Code => :building_construction: Models
+
 ![fix](assets/static-code-analysis-pipelines.svg)
 
 **Well, some of these terms might seem familiar...**
 
+<!-- TODO: Models? -->
 ---
 <!-- _class: lead -->
 <!-- _footer: '*Overly simplified and different languages might look different' -->
@@ -132,7 +229,7 @@ All of these locations you can build a static code analysis tools
 ---
 <!-- _class: lead -->
 <!-- _footer: Using Lark + PyDot -->
-#### Example 1: Abstract Syntax Tree 
+#### Example - Abstract Syntax Tree
 
 ```python
 # Test function
@@ -147,7 +244,7 @@ test("Hello")
 ---
 <!-- _class: lead -->
 <!-- _footer: Using Lark + PyDot -->
-#### Example 2: Abstract Syntax Tree 
+#### Example - Abstract Syntax Tree (web app)
 
 ```python
 from flask import Flask, render_template
@@ -230,7 +327,7 @@ Source: https://en.wikipedia.org/wiki/Control-flow_graph
 <!-- TODO: Fix image -->
 
 ---
-#### Example #X - Detecting Simple Configuration Problems
+#### Example - Detecting Simple Configuration Problems
 
 ```python
 !include(presentations/2021-09-Defcon44131/samples/flask-debugging.py)
