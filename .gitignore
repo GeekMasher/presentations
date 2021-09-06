@@ -1,4 +1,6 @@
 
+.vercel/
+public/
 *.html
 *.pdf
 
