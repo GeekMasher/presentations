@@ -4,8 +4,13 @@ npm install
 
 PUBLIC="./public"
 VERCEL="./.vercel"
-export CHROME_PATH=node_modules/chromium/lib/chromium/chrome-linux/chrome
-echo "[!] Chrome Path :: $CHROME_PATH"
+
+export CHROME_PATH=$(echo node_modules/chromium/lib/chromium/*/chrome)
+echo "[+] Chrome Path :: $CHROME_PATH"
+if [[ ! -f $CHROME_PATH ]]; then
+    echo "[!] Chrome not found on the system..."
+    PDF_DISABLE=0
+fi
 
 if [[ -d $PUBLIC ]]; then
     rm -r $PUBLIC
@@ -48,10 +53,14 @@ for f in ./presentations/*/slides.md; do
             --no-stdin \
             --output "$OUTPUT/index.html" $f
 
-        echo "[+] Creating PDF slides..."
-        marp --engine ./src/engine.js \
-            --allow-local-files --no-stdin \
-            --output "$OUTPUT/slides.pdf" $f
+        if [ -z ${PDF_DISABLE+x} ]; then
+            echo "[+] Creating PDF slides..."
+            marp --engine ./src/engine.js \
+                --allow-local-files --no-stdin \
+                --output "$OUTPUT/slides.pdf" $f
+        else
+            echo "[!] PDF not being created"
+        fi
 
         echo "[+] Finished building slides"
     else
