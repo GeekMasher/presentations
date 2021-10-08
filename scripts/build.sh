@@ -44,10 +44,14 @@ for f in ./presentations/*/slides.md; do
 
         echo "[+] Starting building slides..."
         echo "[+] Creating HTML slides..."
-        marp --engine ./src/engine.js --output "$OUTPUT/index.html" $f
+        marp --engine ./src/engine.js \
+            --no-stdin \
+            --output "$OUTPUT/index.html" $f
 
         echo "[+] Creating PDF slides..."
-        marp --engine ./src/engine.js --allow-local-files --output "$OUTPUT/slides.pdf" $f
+        marp --engine ./src/engine.js \
+            --allow-local-files --no-stdin \
+            --output "$OUTPUT/slides.pdf" $f
 
         echo "[+] Finished building slides"
     else
