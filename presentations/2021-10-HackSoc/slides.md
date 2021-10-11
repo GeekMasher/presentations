@@ -763,7 +763,7 @@ result = os.path.join("data", name)
 ---
 # Thanks you, any questions?
 
-**https://presentations.geekmasher.dev/2021-09-Defcon44131**
+**https://presentations.geekmasher.dev/2021-10-HackSoc**
 
 **https://github.com/GeekMasher/presentations**
 
