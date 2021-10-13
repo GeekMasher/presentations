@@ -375,8 +375,8 @@ print(z)   # <- Taint Flow Analysis (data is propagated through by x being conc
 ---
 # :zap: Taint Analysis
 
-- Sources (user controlled inputs)
-- Sinks (dangerous methods / assignments)
+- Sources (untrustworthy application inputs)
+- Sinks (methods / assignments of interest)
 - Sanitizers (secures the user data)
 - Passthroughs / Taintstep's (functions that track tainted data
 
