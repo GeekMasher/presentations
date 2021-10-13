@@ -7,6 +7,7 @@ backgroundColor: '#eae8db'
 color: '#392020'
 ---
 
+<!-- _footer: "v1.1" -->
 # Introduction to Static Code Analysis
 
 **By Mathew Payne - @GeekMasher**
@@ -32,7 +33,7 @@ https://presentations.geekmasher.dev/2021-09-Defcon44131
 # Today's Talk
 
 - Introduction to to Static Code Analysis
-- Deeper dive into how does Static Code Analysis work?
+- Deeper dive into how does Static Code Analysis work
 - Examples of how this is done
 - Summary and Thoughts on using Static Code Analysis
   - Pros and Cons
@@ -81,7 +82,7 @@ Source: https://owasp.org/www-community/controls/Static_Code_Analysis
 
 ---
 <!-- TODO: Is there a better name for this I can use? -->
-# Models
+# Code & Models
 
 - :memo: Parse the code
   - :palm_tree: Syntax trees
@@ -94,7 +95,7 @@ Source: https://owasp.org/www-community/controls/Static_Code_Analysis
 
 - Two general types
 - :beach_umbrella: Using something insecure
-  - Configurations / Setting
+  - Configurations / Setting / Uses Dangerous Functionality
   - "Is debugging set to True?"
 
 - :mountain: Data flows into somewhere insecure
@@ -123,8 +124,6 @@ Sources: https://github.com/OWASP/ASVS
 ---
 # :warning: Warning: Here be Dragons :dragon:
 
-<!-- TODO: Dragon image + source -->
-
 ---
 # Before we begin: Glossary
 
@@ -135,11 +134,6 @@ Sources: https://github.com/OWASP/ASVS
 
 <!-- _class: lead -->
 *Confusing I know :confused:*
-
----
-# Static Analysis Pipeline / Workflow
-
-:memo: Code => :building_construction: Models => :speech_balloon: Patterns => :bookmark_tabs: Results!
 
 ---
 # Types of Static Analysis Tools
@@ -324,12 +318,10 @@ Sources:
 - Typically based on the Control Flow Graph
 
 - Data model of a program / application
-  - Directional graphs
-
-- Non conditional
-  - CFG focuses on the conditions
-  - Can we tightly linked
-
+  - Directional graph(s)
+  - Does not reflect the syntactic structure of the program
+- Non conditional (handled by the CFG)
+  
 <!--
 - https://codeql.github.com/docs/writing-codeql-queries/about-data-flow-analysis/
 - https://www.sciencedirect.com/topics/computer-science/data-flow-graph
@@ -352,12 +344,41 @@ Sources:
 *Rules and Queries*
 
 ---
+# :zap: Data Flow & Taint Flow Analysis
+
+- Algorithms to calculate:
+  - Where values are held at runtime
+  - Where those values are propagated
+  - Where they are used
+
+- Very similar but a little different
+
+- The core of Static Code Analysis engine
+
+<!-- 
+CodeQL Docs:
+Data flow analysis is used to compute the possible values that a variable can hold at various points in a program, determining how those values propagate through the program and where they are used.
+-->
+
+---
+# Example - Data Flow and Taint Flow
+
+```python
+x = input()
+y = "Hello "
+z = y + x
+print(x)   # <- Data Flow Analysis  (data comes directly from input )
+print(y)   # Static string
+print(z)   # <- Taint Flow Analysis (data is propagated through by x being concatenated)
+```
+
+---
 # :zap: Taint Analysis
 
 - Sources (user controlled inputs)
 - Sinks (dangerous methods / assignments)
 - Sanitizers (secures the user data)
-- Passthroughs (functions that track tainted data)
+- Passthroughs / Taintstep's (functions that track tainted data
 
 
 ---
@@ -682,7 +703,7 @@ output = input()
 ```
 
 ---
-# :radioactive: Passthroughs
+# :radioactive: Passthroughs / Taintstep's
 
 - Tracking data sent to and from libraries
 
@@ -698,7 +719,7 @@ Sources:
 - https://docs3.sonarqube.org/latest/analysis/security_configuration/
 -->
 ---
-### Example - Passthroughs
+### Example - Passthroughs / Taintstep's
 
 ```python
 import os
