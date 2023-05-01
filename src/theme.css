@@ -1,0 +1,16 @@
+/* @theme geekmasher */
+
+@import-theme 'gaia';
+
+section {
+  background-color: #eae8db;
+  color: #392020;
+}
+
+section .hljs {
+	background: #455a64;
+	color: #f8f8f8;
+	display: block;
+	overflow-x: auto;
+	padding: .5em;
+}

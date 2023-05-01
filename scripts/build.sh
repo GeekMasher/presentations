@@ -50,12 +50,14 @@ for f in ./presentations/*/slides.md; do
         echo "[+] Starting building slides..."
         echo "[+] Creating HTML slides..."
         marp --engine ./src/engine.js \
+            --theme ./src/theme.css \
             --no-stdin \
             --output "$OUTPUT/index.html" $f
 
         if [ -z ${PDF_DISABLE+x} ]; then
             echo "[+] Creating PDF slides..."
             marp --engine ./src/engine.js \
+                --theme ./src/theme.css \
                 --allow-local-files --no-stdin \
                 --output "$OUTPUT/slides.pdf" $f
         else
