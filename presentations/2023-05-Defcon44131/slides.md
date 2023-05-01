@@ -24,7 +24,7 @@ paginate: true
 - Running CodeQL to do research
 - Introduction to Query writing
 
-*Questions during presentation is welcome!*
+*Questions during presentation are welcome!*
 
 ---
 # :mag: Static Code Analysis Basics
@@ -39,7 +39,7 @@ paginate: true
 - :lock: Static Application Security Testing (SAST)
 - :hash: Looks at the code without running the code
 - :mag: Discover security vulnerabilities
-- :link: Perform Taint Tracking Analaysis
+- :link: Perform Taint Tracking Analysis
 
 <!-- 
 - Data-flow, Control-flow, and SSA Graph's
@@ -63,7 +63,7 @@ Sources:
 - :interrobang: Sinks (methods / assignments of interest)
 - :lock: Sanitizers (secures the user data)
 - :lock: Guards (conditional checks)
-- :ghost: Passthroughs / Taintsteps
+- :ghost: Passthroughs / Taintsteps (understand what an expression does)
 
 ---
 # :zap: Example - Code Review
@@ -174,7 +174,8 @@ def search():
 # What is CodeQL?
 
 - :wrench: Static Code Analysis Engine
-- :books: Converts source code into data stored into a Database
+- :books: Extracts source code into data
+- :arrow_heading_down: Stores data in a Database
 - :mag: Queries run on the Database
 - :symbols: Domain-specific language called "QL"
 
@@ -205,7 +206,7 @@ git clone --depth=1 https://github.com/github/vscode-codeql-starter
 codeql database create --language python ./python-DC44131-workshop
 ```
 
-*note: little different for compiled languages*
+*note: a little different for compiled languages*
 
 ---
 # :mag: CodeQL Query Basics
@@ -213,7 +214,7 @@ codeql database create --language python ./python-DC44131-workshop
 ```codeql
 /** 
  * @name SQL Injection
- * @kind path-problem
+ * @kind problem
  * ...
  */
 
@@ -222,7 +223,7 @@ import python
 
 // Query Output
 from Call call
-select call
+select call, "Calls in the code"
 ```
 
 ---
@@ -327,18 +328,31 @@ select sink.getNode(), source, sink, "This SQL query depends on $@.", source.get
   "a user-provided value"
 ```
 
----
-# Using built-in queries
+--- 
+# CodeQL Queries and Databases
 
-- There are hundreds of queries per-language
-- Fully extendable
+![bg opacity:.1](assets/background.png)
 
+- :octopus: Pre-computed Databases
+  - Databases for most Open Source applications
+- :cat: Using built-in queries
+  - There are hundreds of queries per-language
+  - Fully extendable and customisable
 
 ---
 # Closing Words
 
+![bg opacity:.1](assets/background.png)
+
+- :mag: Powerful tool to find security vulnerabilities
+- :muscle: Does the heavy lifting for us
+- :cold_sweat: SDL is complex to learn, but once you do :eyes:! 
+- :astonished: Find 0-day using CodeQL
+
 ---
 # Questions?
+
+![bg opacity:.1](assets/background.png)
 
 ---
 # Happy Bug Hunting :moneybag:!
