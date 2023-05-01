@@ -5,9 +5,9 @@
 
 **Mathew Payne - @GeekMasher**
 
-Abertay University Alumni
+Senior Field Security Specialist - GitHub
 
-Field Security Architect - GitHub
+Abertay University Alumni
 
 *Focus on:*
 
