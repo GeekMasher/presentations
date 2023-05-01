@@ -209,7 +209,9 @@ codeql database create --language python ./python-DC44131-workshop
 *note: a little different for compiled languages*
 
 ---
-# :mag: CodeQL Query Basics
+<!-- _footer: "Source: codeql.github.com/docs/writing-codeql-queries/codeql-queries" -->
+### :mag: CodeQL Query Basics
+
 
 ```codeql
 /** 
@@ -217,11 +219,13 @@ codeql database create --language python ./python-DC44131-workshop
  * @kind problem
  * ...
  */
-
-// Imports and components 
 import python
+import DataFlow::PathGraph
 
-// Query Output
+// Predicates and Classes
+class Sources extends DataFlow::Node { /* class  */ }
+
+// Query Output / Results
 from Call call
 select call, "Calls in the code"
 ```
