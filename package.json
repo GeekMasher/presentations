@@ -31,7 +31,7 @@
     "markdown-it-footnote": "^3.0.3",
     "markdown-it-highlightjs": "^4.0.1",
     "markdown-it-include": "^2.0.0",
-    "vercel": "^23.1.2"
+    "vercel": "^29.0.3"
   },
   "devDependencies": {
     "@marp-team/marp-cli": "^1.7.2"
