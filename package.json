@@ -1,39 +1,39 @@
 {
-  "name": "presentations",
-  "version": "0.1.0",
-  "description": "Repository of all my public presentations",
-  "main": "src/index.js",
-  "scripts": {
-    "watch": "marp --watch --engine ./src/engine.js --theme ./src/theme.css -I ./presentations",
-    "serve": "PORT=5000 marp --watch -s --engine ./src/engine.js --theme ./src/theme.css -I ./presentations",
-    "build": "chmod +x ./scripts/build.sh && ./scripts/build.sh",
-    "publish": "vercel --prod ./public/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/GeekMasher/presentations.git"
-  },
-  "keywords": [
-    "presentations",
-    "secuity",
-    "devsecops"
-  ],
-  "author": "GeekMasher",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/GeekMasher/presentations/issues"
-  },
-  "homepage": "https://github.com/GeekMasher/presentations#readme",
-  "dependencies": {
-    "@marp-team/marpit": "^2.1.1",
-    "chromium": "^3.0.2",
-    "markdown-it-container": "^3.0.0",
-    "markdown-it-footnote": "^3.0.3",
-    "markdown-it-highlightjs": "^4.0.1",
-    "markdown-it-include": "^2.0.0",
-    "vercel": "^29.0.3"
-  },
-  "devDependencies": {
-    "@marp-team/marp-cli": "^1.7.2"
-  }
+    "name": "presentations",
+    "version": "0.1.0",
+    "description": "Repository of all my public presentations",
+    "main": "src/index.js",
+    "scripts": {
+        "watch": "marp --watch --engine ./src/engine.js --theme-set ./src/ -I ./presentations",
+        "serve": "PORT=5000 marp --watch -s --engine ./src/engine.js --theme-set ./src/ -I ./presentations",
+        "build": "chmod +x ./scripts/build.sh && ./scripts/build.sh",
+        "publish": "vercel --prod ./public/"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/GeekMasher/presentations.git"
+    },
+    "keywords": [
+        "presentations",
+        "secuity",
+        "devsecops"
+    ],
+    "author": "GeekMasher",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/GeekMasher/presentations/issues"
+    },
+    "homepage": "https://github.com/GeekMasher/presentations#readme",
+    "dependencies": {
+        "@marp-team/marpit": "^2.1.1",
+        "chromium": "^3.0.2",
+        "markdown-it-container": "^3.0.0",
+        "markdown-it-footnote": "^3.0.3",
+        "markdown-it-highlightjs": "^4.0.1",
+        "markdown-it-include": "^2.0.0",
+        "vercel": "^32.5.0"
+    },
+    "devDependencies": {
+        "@marp-team/marp-cli": "^1.7.2"
+    }
 }
