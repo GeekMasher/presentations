@@ -1,0 +1,27 @@
+/* @theme tokyonight */
+
+/* https://github.com/folke/tokyonight.nvim/blob/main/lua/tokyonight/colors.lua */
+
+@import-theme 'gaia';
+
+section {
+  background-color: #1a1b26;
+  color: #7aa2f7;
+}
+
+section h1 {
+    color: #73daca;
+}
+
+section p strong {
+    color: #0db9d7;
+}
+
+section .hljs {
+	background: #414868;
+	color: #7aa2f7;
+	display: block;
+	overflow-x: auto;
+	padding: .5em;
+}
+
