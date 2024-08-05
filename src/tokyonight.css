@@ -5,8 +5,8 @@
 @import-theme 'gaia';
 
 section {
-  background-color: #1a1b26;
-  color: #7aa2f7;
+    background-color: #1a1b26;
+    color: #7aa2f7;
 }
 
 section h1 {
@@ -17,11 +17,21 @@ section p strong {
     color: #0db9d7;
 }
 
-section .hljs {
-	background: #414868;
-	color: #7aa2f7;
-	display: block;
-	overflow-x: auto;
-	padding: .5em;
+section a {
+    color: #7aa2f7;
+    font-size: 35px;
+    letter-spacing: 1.25px;
+    line-height: 1.35;
 }
 
+section.load h1 {
+    text-align: center;
+}
+
+section .hljs {
+    background: #414868;
+    color: #7aa2f7;
+    display: block;
+    overflow-x: auto;
+    padding: .5em;
+}
