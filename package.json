@@ -25,15 +25,15 @@
     },
     "homepage": "https://github.com/GeekMasher/presentations#readme",
     "dependencies": {
-        "@marp-team/marpit": "^3.0.0",
-        "markdown-it-container": "^4.0.0",
-        "markdown-it-footnote": "^4.0.0",
-        "markdown-it-highlightjs": "^4.1.0",
-        "markdown-it-include": "^2.0.0"
+        "@marp-team/marpit": "^3",
+        "markdown-it-container": "^4",
+        "markdown-it-footnote": "^4",
+        "markdown-it-highlightjs": "^4.1",
+        "markdown-it-include": "^2"
     },
     "devDependencies": {
-        "@marp-team/marp-cli": "^3.4.0",
-        "chromium": "^3.0.3",
-        "vercel": "^35.0.0"
+        "@marp-team/marp-cli": "^4",
+        "chromium": "^3",
+        "vercel": "^32.3.0"
     }
 }
