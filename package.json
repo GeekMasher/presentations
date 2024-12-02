@@ -37,6 +37,6 @@
     "devDependencies": {
         "@marp-team/marp-cli": "^4",
         "chromium": "^3",
-        "vercel": "^32.3.0"
+        "vercel": "^39.1.2"
     }
 }
