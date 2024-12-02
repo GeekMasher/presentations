@@ -2,6 +2,9 @@
     "name": "presentations",
     "version": "0.1.0",
     "description": "Repository of all my public presentations",
+    "engines": {
+        "node": "22.x"
+    },
     "main": "src/index.js",
     "scripts": {
         "watch": "marp --watch --engine ./src/engine.js --theme-set ./src/ -I ./presentations",
