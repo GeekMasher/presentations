@@ -257,13 +257,11 @@ syft scan -o cyclonedx-json=./ddd-sbom.json ghcr.io/geekmasher/digitalocean-dyna
 
 ---
 <!-- _class: lead -->
-# ❓ So was a vulnerable to Log4Shell?
+# ❓ So was I vulnerable to Log4Shell?
 
 ---
 
-# 🧯 So was a vulnerable to Log4Shell?
-
-Sadly, I was...
+# 🧯 Sadly, I was...
 
 - Minecraft Server
 - ELK Stack
