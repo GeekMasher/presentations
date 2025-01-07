@@ -28,8 +28,12 @@ section.load h1 {
     text-align: center;
 }
 
+marp-pre {
+    background-color: #414868;
+}
+
 section .hljs {
-    background: #414868;
+    background-color: #414868;
     color: #7aa2f7;
     display: block;
     overflow-x: auto;
